@@ -1,0 +1,20 @@
+---
+- name: Install htop
+  hosts: all
+  become: yes
+
+  tasks:
+   - name: Install EPEL repo
+     ansible.builtin.yum:
+       name: epel-release
+       state: latest
+
+   - name: Install htop
+     ansible.builtin.yum:
+       name: htop
+       state: latest
+
+   - name: Remove EPEL repo
+     ansible.builtin.yum:
+       name: epel-release
+       state: removed
